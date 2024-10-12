@@ -7,6 +7,9 @@ def make_commit(date, commit_message):
     os.environ['GIT_AUTHOR_DATE'] = date
     os.environ['GIT_COMMITTER_DATE'] = date
 
+    # Pull the latest changes from the remote repository to avoid conflicts
+    subprocess.run(['git', 'pull', 'origin', 'main'])
+
     # Add all changes to the commit
     subprocess.run(['git', 'add', '.'])
     
